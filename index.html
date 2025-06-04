@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimizador de Rotas Inteligente</title>
+    <meta name="description" content="Otimize suas rotas com inserção por voz, nome ou CEP">
+    <meta name="theme-color" content="#2196F3">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Otimizador Rotas">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>🗺️ Otimizador de Rotas</h1>
+            <button id="installBtn" class="install-btn" style="display: none;">📱 Instalar App</button>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="input-group">
+                <input type="text" id="addressInput" placeholder="Digite um endereço ou CEP..." class="address-input">
+                <div class="input-buttons">
+                    <button id="voiceBtn" class="voice-btn" title="Inserir por voz">🎤</button>
+                    <button id="addBtn" class="add-btn">➕ Adicionar</button>
+                </div>
+            </div>
+            <div id="voiceStatus" class="voice-status"></div>
+            
+            <!-- Route Options -->
+            <div class="route-options">
+                <label class="option-label">
+                    <input type="radio" name="routeType" value="shortest" checked> 
+                    ⚡ Menor Distância
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="routeType" value="fastest"> 
+                    🚗 Mais Rápido
+                </label>
+                <label class="option-label">
+                    <input type="checkbox" id="returnToStart"> 
+                    🔄 Retornar ao início
+                </label>
+            </div>
+        </section>
+
+        <!-- Address List -->
+        <section class="address-list-section">
+            <h3>Endereços Adicionados (<span id="addressCount">0</span>)</h3>
+            <ul id="addressList" class="address-list"></ul>
+            <div class="action-buttons">
+                <button id="optimizeBtn" class="optimize-btn" disabled>⚡ Otimizar Rota</button>
+                <button id="clearBtn" class="clear-btn">🗑️ Limpar Todos</button>
+                <button id="saveRouteBtn" class="save-btn" style="display: none;">💾 Salvar Rota</button>
+                <button id="loadRouteBtn" class="load-btn">📂 Carregar Rota</button>
+            </div>
+        </section>
+
+        <!-- Analytics -->
+        <section class="analytics-section">
+            <h3>📈 Estatísticas</h3>
+            <div id="analytics" class="analytics-container">
+                <div class="analytics-grid">
+                    <div class="analytics-item">
+                        <span class="analytics-value">0</span>
+                        <span class="analytics-label">Rotas Otimizadas</span>
+                    </div>
+                    <div class="analytics-item">
+                        <span class="analytics-value">0 km</span>
+                        <span class="analytics-label">Distância Total</span>
+                    </div>
+                    <div class="analytics-item">
+                        <span class="analytics-value">0</span>
+                        <span class="analytics-label">Histórico</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Route Info -->
+        <section id="routeInfo" class="route-info" style="display: none;">
+            <h3>📊 Informações da Rota</h3>
+            <div class="route-stats">
+                <div class="stat">
+                    <span class="stat-label">Distância Total:</span>
+                    <span id="totalDistance" class="stat-value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Tempo Estimado:</span>
+                    <span id="estimatedTime" class="stat-value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Paradas:</span>
+                    <span id="totalStops" class="stat-value">-</span>
+                </div>
+            </div>
+            <div class="route-actions">
+                <button id="showHistoryBtn" class="history-btn">📋 Ver Histórico</button>
+                <button id="exportRouteBtn" class="export-btn">📤 Exportar</button>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div id="map" class="map-container"></div>
+            <div class="map-controls">
+                <button id="centerMapBtn" class="map-control-btn">🎯 Centralizar</button>
+                <button id="fullscreenBtn" class="map-control-btn">⛶ Tela Cheia</button>
+                <button id="toggleCamerasBtn" class="map-control-btn cameras-active">📷 Radares</button>
+                <button id="openGoogleMaps" class="google-maps-btn" style="display: none;">
+                    📍 Abrir no Google Maps
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Otimizando rota...</p>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
