@@ -6,7 +6,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #ea4335 100%);
     min-height: 100vh;
     color: #333;
     background-attachment: fixed;
@@ -116,29 +116,29 @@ h2 {
 }
 
 .voice-btn {
-    background: linear-gradient(135deg, #06d6a0, #118ab2);
+    background: linear-gradient(135deg, #4285f4, #1a73e8);
     color: white;
     min-width: 55px;
-    box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3);
+    box-shadow: 0 8px 15px rgba(66, 133, 244, 0.3);
 }
 
 .voice-btn:hover {
-    background: linear-gradient(135deg, #118ab2, #06d6a0);
+    background: linear-gradient(135deg, #1a73e8, #4285f4);
     transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 12px 20px rgba(6, 214, 160, 0.4);
+    box-shadow: 0 12px 20px rgba(66, 133, 244, 0.4);
 }
 
 .add-btn {
-    background: linear-gradient(135deg, #f72585, #b5179e);
+    background: linear-gradient(135deg, #34a853, #137333);
     color: white;
     min-width: 110px;
-    box-shadow: 0 8px 15px rgba(247, 37, 133, 0.3);
+    box-shadow: 0 8px 15px rgba(52, 168, 83, 0.3);
 }
 
 .add-btn:hover {
-    background: linear-gradient(135deg, #b5179e, #f72585);
+    background: linear-gradient(135deg, #137333, #34a853);
     transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(247, 37, 133, 0.4);
+    box-shadow: 0 12px 20px rgba(52, 168, 83, 0.4);
 }
 
 .voice-status {
@@ -160,7 +160,7 @@ h2 {
     background: #f9f9f9;
     border-radius: 10px;
     margin-bottom: 10px;
-    border-left: 4px solid #2196F3;
+    border-left: 4px solid #4285f4;
     cursor: move;
     transition: all 0.3s ease;
 }
@@ -238,15 +238,15 @@ h2 {
 }
 
 .optimize-btn {
-    background: linear-gradient(135deg, #06d6a0, #073b4c);
+    background: linear-gradient(135deg, #4285f4, #1a73e8);
     color: white;
-    box-shadow: 0 8px 20px rgba(6, 214, 160, 0.3);
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
 }
 
 .optimize-btn:hover:not(:disabled) {
-    background: linear-gradient(135deg, #073b4c, #06d6a0);
+    background: linear-gradient(135deg, #1a73e8, #4285f4);
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(6, 214, 160, 0.4);
+    box-shadow: 0 12px 25px rgba(66, 133, 244, 0.4);
 }
 
 .optimize-btn:disabled {
@@ -255,42 +255,42 @@ h2 {
 }
 
 .clear-btn {
-    background: linear-gradient(135deg, #ef476f, #f72585);
+    background: linear-gradient(135deg, #ea4335, #d33b2c);
     color: white;
-    box-shadow: 0 8px 20px rgba(239, 71, 111, 0.3);
+    box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);
 }
 
 .clear-btn:hover {
-    background: linear-gradient(135deg, #f72585, #ef476f);
+    background: linear-gradient(135deg, #d33b2c, #ea4335);
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(239, 71, 111, 0.4);
+    box-shadow: 0 12px 25px rgba(234, 67, 53, 0.4);
 }
 
 .maps-btn {
-    background: linear-gradient(135deg, #ffd166, #f77f00);
+    background: linear-gradient(135deg, #fbbc04, #f9ab00);
     color: white;
     width: 100%;
     margin-bottom: 12px;
-    box-shadow: 0 8px 20px rgba(255, 209, 102, 0.3);
+    box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);
 }
 
 .maps-btn:hover {
-    background: linear-gradient(135deg, #f77f00, #ffd166);
+    background: linear-gradient(135deg, #f9ab00, #fbbc04);
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(255, 209, 102, 0.4);
+    box-shadow: 0 12px 25px rgba(251, 188, 4, 0.4);
 }
 
 .save-btn {
-    background: linear-gradient(135deg, #7209b7, #480ca8);
+    background: linear-gradient(135deg, #34a853, #137333);
     color: white;
     width: 100%;
-    box-shadow: 0 8px 20px rgba(114, 9, 183, 0.3);
+    box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);
 }
 
 .save-btn:hover {
-    background: linear-gradient(135deg, #480ca8, #7209b7);
+    background: linear-gradient(135deg, #137333, #34a853);
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(114, 9, 183, 0.4);
+    box-shadow: 0 12px 25px rgba(52, 168, 83, 0.4);
 }
 
 .route-info {
@@ -315,7 +315,7 @@ h2 {
 }
 
 .step-number {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #4285f4, #1a73e8);
     color: white;
     width: 35px;
     height: 35px;
@@ -325,7 +325,7 @@ h2 {
     justify-content: center;
     margin-right: 18px;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
 }
 
 .loading {
@@ -367,7 +367,7 @@ h2 {
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 10px;
-    border-left: 4px solid #2196F3;
+    border-left: 4px solid #4285f4;
 }
 
 .saved-route-header {
@@ -402,12 +402,12 @@ h2 {
 }
 
 .load-btn {
-    background: #2196F3;
+    background: #4285f4;
     color: white;
 }
 
 .delete-btn {
-    background: #f44336;
+    background: #ea4335;
     color: white;
 }
 
@@ -436,7 +436,7 @@ h2 {
 }
 
 .toggle-map-btn {
-    background: linear-gradient(135deg, #073b4c, #06d6a0);
+    background: linear-gradient(135deg, #5f6368, #3c4043);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -446,13 +446,13 @@ h2 {
     font-weight: 600;
     margin-bottom: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(7, 59, 76, 0.3);
+    box-shadow: 0 5px 15px rgba(95, 99, 104, 0.3);
 }
 
 .toggle-map-btn:hover {
-    background: linear-gradient(135deg, #06d6a0, #073b4c);
+    background: linear-gradient(135deg, #3c4043, #5f6368);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(7, 59, 76, 0.4);
+    box-shadow: 0 8px 20px rgba(95, 99, 104, 0.4);
 }
 
 .address-suggestions {
@@ -507,7 +507,7 @@ h2 {
 }
 
 .export-btn {
-    background: linear-gradient(135deg, #17a2b8, #138496);
+    background: linear-gradient(135deg, #5f6368, #3c4043);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -520,9 +520,9 @@ h2 {
 }
 
 .export-btn:hover {
-    background: linear-gradient(135deg, #138496, #17a2b8);
+    background: linear-gradient(135deg, #3c4043, #5f6368);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+    box-shadow: 0 5px 15px rgba(95, 99, 104, 0.3);
 }
 
 .result-actions {
