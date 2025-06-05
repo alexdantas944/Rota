@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimizador de Rotas</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗺️ Otimizador de Rotas</h1>
+            <button id="installBtn" class="install-btn" style="display: none;">📱 Instalar App</button>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <h2>📍 Adicionar Paradas</h2>
+                <div class="input-group">
+                    <input type="text" id="addressInput" placeholder="✨ Digite endereço, CEP (ex: 01310-100) ou nome do local">
+                    <button id="voiceBtn" class="voice-btn" title="Falar endereço">🎤</button>
+                    <button id="addBtn" class="add-btn">➕ Adicionar</button>
+                </div>
+                <div id="voiceStatus" class="voice-status"></div>
+            </div>
+
+            <div class="stops-section">
+                <h2>📋 Paradas Adicionadas</h2>
+                <div id="stopsList" class="stops-list"></div>
+                <div class="actions">
+                    <button id="optimizeBtn" class="optimize-btn" disabled>🎯 Otimizar Rota</button>
+                    <button id="clearBtn" class="clear-btn">🗑️ Limpar Tudo</button>
+                </div>
+            </div>
+
+            <div class="map-section">
+                <h2>🗺️ Visualização do Mapa</h2>
+                <button id="toggleMapBtn" class="toggle-map-btn">👁️ Mostrar/Ocultar Mapa</button>
+                <div id="mapContainer" style="display: none;">
+                    <div class="map-info" id="mapInfo">
+                        Adicione pelo menos uma parada para visualizar no mapa
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <h2>🎯 Rota Otimizada</h2>
+                <div id="routeInfo" class="route-info"></div>
+                <div class="result-actions">
+                    <button id="openMapsBtn" class="maps-btn">🗺️ Abrir no Google Maps</button>
+                    <button id="saveRouteBtn" class="save-btn">💾 Salvar Rota</button>
+                </div>
+                <div class="export-section">
+                    <h3>📤 Exportar Rota</h3>
+                    <div class="export-buttons">
+                        <button onclick="routeOptimizer.exportRoute('json')" class="export-btn">📄 JSON</button>
+                        <button onclick="routeOptimizer.exportRoute('csv')" class="export-btn">📊 CSV</button>
+                        <button onclick="routeOptimizer.exportRoute('gpx')" class="export-btn">🗺️ GPX</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="saved-routes-section">
+                <h2>📚 Rotas Salvas</h2>
+                <div id="savedRoutesList" class="saved-routes-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Otimizando rota...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

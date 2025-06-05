@@ -1,0 +1,564 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    color: #333;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+}
+
+.install-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.install-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+main {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.input-section, .stops-section, .result-section, .saved-routes-section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#addressInput {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#addressInput:focus {
+    outline: none;
+    border-color: #2196F3;
+}
+
+.voice-btn, .add-btn {
+    padding: 14px 18px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.voice-btn::before, .add-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.voice-btn:hover::before, .add-btn:hover::before {
+    left: 100%;
+}
+
+.voice-btn {
+    background: linear-gradient(135deg, #06d6a0, #118ab2);
+    color: white;
+    min-width: 55px;
+    box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3);
+}
+
+.voice-btn:hover {
+    background: linear-gradient(135deg, #118ab2, #06d6a0);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 20px rgba(6, 214, 160, 0.4);
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #f72585, #b5179e);
+    color: white;
+    min-width: 110px;
+    box-shadow: 0 8px 15px rgba(247, 37, 133, 0.3);
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #b5179e, #f72585);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(247, 37, 133, 0.4);
+}
+
+.voice-status {
+    font-size: 0.9rem;
+    color: #666;
+    min-height: 20px;
+}
+
+.stops-list {
+    min-height: 50px;
+    margin-bottom: 20px;
+}
+
+.stop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #2196F3;
+    cursor: move;
+    transition: all 0.3s ease;
+}
+
+.stop-item:hover {
+    background: #f0f8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.drag-handle {
+    color: #999;
+    margin-right: 10px;
+    cursor: grab;
+    user-select: none;
+}
+
+.stop-content {
+    flex: 1;
+}
+
+.time-estimate {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.remove-btn {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background: #da190b;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.optimize-btn, .clear-btn, .maps-btn, .save-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.optimize-btn::before, .clear-btn::before, .maps-btn::before, .save-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.optimize-btn:hover::before, .clear-btn:hover::before, .maps-btn:hover::before, .save-btn:hover::before {
+    left: 100%;
+}
+
+.optimize-btn {
+    background: linear-gradient(135deg, #06d6a0, #073b4c);
+    color: white;
+    box-shadow: 0 8px 20px rgba(6, 214, 160, 0.3);
+}
+
+.optimize-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #073b4c, #06d6a0);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(6, 214, 160, 0.4);
+}
+
+.optimize-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    background: linear-gradient(135deg, #ef476f, #f72585);
+    color: white;
+    box-shadow: 0 8px 20px rgba(239, 71, 111, 0.3);
+}
+
+.clear-btn:hover {
+    background: linear-gradient(135deg, #f72585, #ef476f);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(239, 71, 111, 0.4);
+}
+
+.maps-btn {
+    background: linear-gradient(135deg, #ffd166, #f77f00);
+    color: white;
+    width: 100%;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 20px rgba(255, 209, 102, 0.3);
+}
+
+.maps-btn:hover {
+    background: linear-gradient(135deg, #f77f00, #ffd166);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 209, 102, 0.4);
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #7209b7, #480ca8);
+    color: white;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(114, 9, 183, 0.3);
+}
+
+.save-btn:hover {
+    background: linear-gradient(135deg, #480ca8, #7209b7);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(114, 9, 183, 0.4);
+}
+
+.route-info {
+    background: linear-gradient(135deg, rgba(232, 245, 232, 0.9), rgba(240, 247, 255, 0.9));
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.route-step {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.route-step:last-child {
+    border-bottom: none;
+}
+
+.step-number {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #2196F3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading p {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.saved-route-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #2196F3;
+}
+
+.saved-route-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.saved-route-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.saved-route-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.saved-route-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.load-btn, .delete-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.load-btn {
+    background: #2196F3;
+    color: white;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: white;
+}
+
+.map-section {
+    margin-bottom: 30px;
+}
+
+#mapContainer {
+    height: 400px;
+    border-radius: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.map-info {
+    background: linear-gradient(135deg, rgba(6, 214, 160, 0.1), rgba(7, 59, 76, 0.1));
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(6, 214, 160, 0.3);
+    text-align: center;
+    color: #073b4c;
+    font-weight: 500;
+}
+
+.toggle-map-btn {
+    background: linear-gradient(135deg, #073b4c, #06d6a0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(7, 59, 76, 0.3);
+}
+
+.toggle-map-btn:hover {
+    background: linear-gradient(135deg, #06d6a0, #073b4c);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(7, 59, 76, 0.4);
+}
+
+.address-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+    background: #f0f8ff;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.input-group {
+    position: relative;
+}
+
+.export-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.export-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.export-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.export-btn {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.export-btn:hover {
+    background: linear-gradient(135deg, #138496, #17a2b8);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+}
+
+.result-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .export-buttons {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .install-btn {
+        position: static;
+        margin-top: 10px;
+    }
+
+    #mapContainer {
+        height: 300px;
+    }
+}
